@@ -1,31 +1,14 @@
-/* CURRENTLY IN: javascript/main.js */
 
-$('.js-slick').slick({
-  arrows: false
-});
+// google Maps API 
+  function initialize() {
+    var mapCanvas = document.getElementById('map');
+	var mapOptions = {
+	    center: new google.maps.LatLng(41.1054411,-74.039521),
+	    zoom: 8,
+	    mapTypeId: google.maps.MapTypeId.ROADMAP
+	    }
+    var map = new google.maps.Map(mapCanvas, mapOptions);
+	}
+   google.maps.event.addDomListener(window, 'load', initialize);
 
-$('.js-prev').on('click', slickPrev );
-$('.js-next').on('click', slickNext );
 
-function slickPrev() {
-  $('.js-slick').slick( 'slickPrev' );
-}
-
-function slickNext() {
-  $('.js-slick').slick( 'slicklickNext' );
-}
-
-$('.js-page-1').on('click', slickGoTo);
-$('.js-page-2').on('click', slickGoTo);
-$('.js-page-3').on('click', slickGoTo);
-
-function slickGoTo() {
-  var me = $( this );
-
-  var imageSlideNumber = me.attr('data-id');
-
-  $('.js-slick').slick('slickGoTo', imageSlideNumber);
-
-  $('.page-active').removeClass('page-active');
-  me.addClass('page-active');
-}
